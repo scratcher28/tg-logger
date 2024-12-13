@@ -1,0 +1,23 @@
+{
+    "name": "prog-time/tg-logger",
+    "description": "A Laravel package for sending logs to Telegram",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0",
+        "illuminate/support": "^10.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\TelegramLogger\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TgLogger\\TelegramLogger\\TelegramLoggerServiceProvider"
+            ]
+        }
+    }
+}
