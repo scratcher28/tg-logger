@@ -6,4 +6,4 @@ A package for sending Laravel logs to Telegram.
 
 1. Install the package:
    ```bash
-   composer require vendor/telegram-logger
+   composer require prog-time/tg-logger

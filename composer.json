@@ -3,6 +3,8 @@
     "description": "A Laravel package for sending logs to Telegram",
     "type": "library",
     "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": ">=8.0",
         "illuminate/support": "^10.0",
