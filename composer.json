@@ -5,6 +5,15 @@
     "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "support": {
+        "source": "https://github.com/prog-time/tg-logger"
+    },
+    "authors": [
+        {
+            "name": "Prog-Time",
+            "email": "iliya-rabota97@mail.com"
+        }
+    ],
     "require": {
         "php": ">=8.0",
         "illuminate/support": "^10.0",
