@@ -10,13 +10,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Vendor\\TelegramLogger\\": "src/"
+            "ProgTime\\TgLogger\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "TgLogger\\TelegramLogger\\TelegramLoggerServiceProvider"
+                "ProgTime\\TelegramLogger\\TelegramLoggerServiceProvider"
             ]
         }
     }
