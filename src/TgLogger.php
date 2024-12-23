@@ -1,31 +1,62 @@
 <?php
 
-namespace TgLogger\TelegramLogger;
+namespace ProgTime\TgLogger;
 
-use GuzzleHttp\Client;
-
+/**
+ * Класс для отправки логов в Telegram
+ */
 class TgLogger
 {
-    protected $botToken;
-    protected $chatId;
-    protected $client;
-
-    public function __construct()
+    /**
+     * Формирование списка тем для логирования
+     * @return array
+     */
+    private static function getConfigParams(): array
     {
-        $this->botToken = config('telegram-logger.bot_token');
-        $this->chatId = config('telegram-logger.chat_id');
-        $this->client = new Client();
+        try {
+            $topicSettings = config('tg-logger.topics');
+            if (empty($topicSettings)) {
+                throw new \Exception('Topics not found!');
+            }
+
+            $resultSettings = [];
+            foreach ($topicSettings as $param) {
+                $levelParams = strtolower($param['level']);
+                $listLevelItems = explode(',', $levelParams);
+                foreach ($listLevelItems as $item) {
+                    $resultSettings[trim($item)] = $param;
+                }
+            }
+
+            return $resultSettings;
+        } catch (\Exception $e) {
+            return [];
+        }
     }
 
-    public function sendLog(string $message): void
+    /**
+     * Отправка лога в Telegram
+     * @param mixed $logData - данные для логирования
+     * @param string $level - код типа лога
+     * @return void
+     */
+    public static function sendLog(mixed $logData, string $level): void
     {
-        $url = "https://api.telegram.org/bot{$this->botToken}/sendMessage";
+        $topicSettings = self::getConfigParams();
+        if (!empty($topicSettings[$level])) {
+            $queryParams = [
+                'message_thread_id' => $topicSettings[$level]['id_topic'],
+            ];
 
-        $this->client->post($url, [
-            'form_params' => [
-                'chat_id' => $this->chatId,
-                'text' => $message,
-            ],
-        ]);
+            if (is_string($logData)) {
+                $textMessage = $logData;
+                $queryParams['text'] = $textMessage;
+            } else {
+                $queryParams['text'] = '``` '. print_r($logData, true) .' ```';
+                $queryParams['parse_mode'] = 'MarkdownV2';
+            }
+
+            (new TgLoggerMethods())->telegramQuery('sendMessage', $queryParams);
+        }
     }
 }
