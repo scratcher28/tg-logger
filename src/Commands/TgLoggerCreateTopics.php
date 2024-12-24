@@ -61,7 +61,7 @@ class TgLoggerCreateTopics extends Command
     {
         $configPath = config_path('tg-logger.php');
         $updatedContent = "<?php\n\nreturn " . var_export($configSettings, true) . "; \n";
-        File::put($configPath, $updatedContent);
+        file_put_contents($configPath, $updatedContent);
         $this->call('config:cache');
     }
 }
