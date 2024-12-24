@@ -3,7 +3,8 @@
     "description": "A Laravel package for sending logs to Telegram",
     "type": "library",
     "license": "MIT",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
+    "version": "1.0.0",
     "prefer-stable": true,
     "support": {
         "source": "https://github.com/prog-time/tg-logger"
