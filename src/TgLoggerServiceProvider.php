@@ -12,7 +12,7 @@ class TgLoggerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->mergeConfigFrom(__DIR__ . '/../config/tg-logger.php', 'tg-logger');
     }
 
     /**
@@ -24,6 +24,10 @@ class TgLoggerServiceProvider extends ServiceProvider
             $this->commands([
                 TgLoggerCreateTopics::class,
             ]);
+
+            $this->publishes([
+                __DIR__ . '/../config/tg-logger.php' => config_path('tg-logger.php'),
+            ], 'config');
         }
     }
 }

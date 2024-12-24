@@ -17,12 +17,12 @@ class TgLoggerCreateTopics extends Command
 
             $configSettings = config('tg-logger');
             if (empty($topics)) {
-                throw new \Exception('Config tg-logger not found');
+                throw new \Exception('Config tg-logger not found!');
             }
 
             $topics = config('tg-logger.topics');
             if (empty($topics)) {
-                throw new \Exception('Topics not found');
+                throw new \Exception('Topics not found!');
             }
 
             foreach ($topics as $key => $valueParams) {
@@ -51,9 +51,9 @@ class TgLoggerCreateTopics extends Command
             }
             $this->updateConfigFile($configSettings);
 
-            $this->info('All topics have been created and the configuration has been updated.');
+            $this->info('All topics have been created and the configuration has been updated!');
         } catch (\Exception $e) {
-            $this->info($e->getMessage());
+            $this->info('ERROR: ' . $e->getMessage());
         }
     }
 
