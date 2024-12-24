@@ -16,11 +16,12 @@ class TgLoggerCreateTopics extends Command
             $this->call('config:cache');
 
             $configSettings = config('tg-logger');
+            $topics = config('tg-logger.topics');
+
             if (empty($topics)) {
                 throw new \Exception('Config tg-logger not found!');
             }
 
-            $topics = config('tg-logger.topics');
             if (empty($topics)) {
                 throw new \Exception('Topics not found!');
             }
