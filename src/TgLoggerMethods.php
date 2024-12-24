@@ -8,13 +8,13 @@ use Illuminate\Foundation\Application;
 class TgLoggerMethods
 {
     /**
-     * Токен бота
+     * Bot Token
      * @var string
      */
     private string $botToken;
 
     /**
-     * ID чата для логов
+     * Chat ID for logs
      * @var int
      */
     private int $chatId;
@@ -37,7 +37,7 @@ class TgLoggerMethods
     }
 
     /**
-     * Отправка POST запросов
+     * Sending POST requests
      * @param string $urlQuery
      * @param array $queryParams
      * @return array|null
@@ -65,9 +65,9 @@ class TgLoggerMethods
     }
 
     /**
-     * Отправка запросов в Telegram
-     * @param string $method - метод запроса
-     * @param array $queryParams - параметры запроса
+     * Sending requests to Telegram
+     * @param string $method - request method
+     * @param array $queryParams - request parameters
      * @return array|null
      */
     public function telegramQuery(string $method, array $queryParams = []): ?array
