@@ -3,12 +3,12 @@
 namespace ProgTime\TgLogger;
 
 /**
- * Класс для отправки логов в Telegram
+ * A class for sending logs to Telegram
  */
 class TgLogger
 {
     /**
-     * Формирование списка тем для логирования
+     * Creating a list of topics for logging
      * @return array
      */
     private static function getConfigParams(): array
@@ -35,9 +35,9 @@ class TgLogger
     }
 
     /**
-     * Отправка лога в Telegram
-     * @param mixed $logData - данные для логирования
-     * @param string $level - код типа лога
+     * Sending the log to Telegram
+     * @param mixed $logData - logging data
+     * @param string $level - the log type code
      * @return void
      */
     public static function sendLog(mixed $logData, string $level): void
