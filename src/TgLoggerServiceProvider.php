@@ -5,7 +5,7 @@ namespace ProgTime\TgLogger;
 use Illuminate\Support\ServiceProvider;
 use ProgTime\TgLogger\Commands\TgLoggerCreateTopics;
 
-class TelegramLoggerServiceProvider extends ServiceProvider
+class TgLoggerServiceProvider extends ServiceProvider
 {
     /**
      * Register the application's services.
