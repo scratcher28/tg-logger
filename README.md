@@ -20,11 +20,11 @@ TG_LOGGER_TOKEN="token_bot"
 TG_LOGGER_CHAT_ID="id_group"
 ```
 4. Add the created bot and grant it administrator rights
-5. Create a configuration file **config/tg-logger.php ** manually or using a command.
+5. Create a configuration file **config/tg-logger.php** manually or using a command.
 ```php
 php artisan vendor:publish --tag=config
 ```
-6. In **config/tg-logger.php ** specify the bot token, the ID of the created group, and describe the topics that need to be created.
+6. In **config/tg-logger.php** specify the bot token, the ID of the created group, and describe the topics that need to be created.
 ```bash
 return [
     'token' => env('TG_LOGGER_TOKEN'),
@@ -48,14 +48,14 @@ return [
   ]
 ];
 ```
-7. Run the command to create themes in a group. After executing this command, the file **config/tg-logger.php ** it will be overwritten and the topic IDs for each log type will be indicated in it.
+7. Run the command to create themes in a group. After executing this command, the file **config/tg-logger.php** it will be overwritten and the topic IDs for each log type will be indicated in it.
 ```bash
 php artisan tglogger:create-topics
 ```
 
 ## Sending any type of error
 To catch all types of errors, you need to change the basic log handler in
-the configuration file **config/logging.php ** by specifying the module classes as handlers.
+the configuration file **config/logging.php** by specifying the module classes as handlers.
 
 ```angular2html
 'channels' => [
