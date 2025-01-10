@@ -1,36 +1,31 @@
 # Telegram Logger for Laravel
 
-Модуль для Laravel, который позволяет отправлять логи
-в Telegram.
+A module for Laravel that allows you to send logs to Telegram.
 
-## Описание
-Данный модуль позволяем отправлять логи в Telegram группу
-разбивая из по темам. Вы можете описать конфигурацию для базовых типов логов
-или написать свои уровни логирования.
+## Description
+This module allows you to send logs to a Telegram group, breaking them down by topic. You can describe the configuration for the basic log types or write your own logging levels.
 
-## Установка модуля
-Установка производится с помощью Composer:
-   ```bash
-   composer require prog-time/tg-logger
-   ```
+## Installing the module
+The installation is done using Composer:
+```bash
+composer require prog-time/tg-logger
+```
    
-## Настройка модуля
-1. Создайте Telegram бота
-2. Создайте Telegram группу и включите в ней "Темы"
-3. Укажите переменные в .env
+## Configuring the module
+1. Create a Telegram bot
+2. Create a Telegram group and include "Topics" in it
+3. Specify the variables in .environment
 ```php
 TG_LOGGER_TOKEN="token_bot"
 TG_LOGGER_CHAT_ID="id_group"
 ```
-4. Добавьте созданного бота и выдайте ему права администратора
-5. Создайте конфигурационный файл **config/tg-logger.php** вручную или с помощью команды.
+4. Add the created bot and grant it administrator rights
+5. Create a configuration file **config/tg-logger.php ** manually or using a command.
 ```php
 php artisan vendor:publish --tag=config
 ```
-6. В **config/tg-logger.php** укажите токен бота, ID созданной группы и опишите темы которые нужно создать.
+6. In **config/tg-logger.php ** specify the bot token, the ID of the created group, and describe the topics that need to be created.
 ```bash
-<?php
-
 return [
     'token' => env('TG_LOGGER_TOKEN'),
     'chat_id' => env('TG_LOGGER_CHAT_ID'),
@@ -52,16 +47,15 @@ return [
         ]
   ]
 ];
-
 ```
-7. Выполните команду для создания тем в группе. После выполнения данной команды, файл **config/tg-logger.php** перезапишется и в нём будут указаны ID топиков для каждого типа лога.
+7. Run the command to create themes in a group. After executing this command, the file **config/tg-logger.php ** it will be overwritten and the topic IDs for each log type will be indicated in it.
 ```bash
 php artisan tglogger:create-topics
 ```
 
-## Отправка любых типов ошибок
-Для отлова всех типов ошибок вам необходимо изменить базовый обработчик логов в 
-конфигурационном файле **config/logging.php**, указав в качестве обработчиков классы модуля.
+## Sending any type of error
+To catch all types of errors, you need to change the basic log handler in
+the configuration file **config/logging.php ** by specifying the module classes as handlers.
 
 ```angular2html
 'channels' => [
@@ -75,14 +69,14 @@ php artisan tglogger:create-topics
         ...
     ],
 ```
-И в .env изменить параметр **LOG_CHANNEL**
+and in .env, change the **LOG_CHANNEL parameter**
 
 ```angular2html
 LOG_CHANNEL=telegram
 ```
 
-## Вызов работы модуля напрямую
-Для работы с модулем напрямую вы можете использовать следующий код.
+## Calling the module operation directly
+To work with the module directly, you can use the following code.
 
 ```php
 TgLogger::sendLog('Your message', 'level');
