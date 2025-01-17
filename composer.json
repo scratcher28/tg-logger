@@ -1,5 +1,5 @@
 {
-    "name": "prog-time/tg-logger",
+    "name": "scratcher28/tg-logger",
     "description": "A Laravel package for sending logs to Telegram",
     "type": "library",
     "license": "MIT",
