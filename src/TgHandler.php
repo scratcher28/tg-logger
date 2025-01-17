@@ -8,9 +8,14 @@ use Monolog\LogRecord;
 
 class TgHandler extends AbstractProcessingHandler
 {
-    protected function write(LogRecord $record): void
+    protected function write($record): void
     {
-        $levelName = strtolower($record->level->name);
+        // If it's an object, convert it to an array for compatibility
+        if ($record instanceof LogRecord) {
+            $record = $record->toArray();
+        }
+
+        $levelName = strtolower($record['level_name']);
         TgLogger::sendLog($record['formatted'], $levelName);
     }
 }
